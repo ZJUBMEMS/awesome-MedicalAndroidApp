@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<android.support.design.widget.TabLayout
+    android:id="@+id/buttom_tab"
+    android:background="@color/buttomTabColor"
+    app:tabIndicatorHeight="0dp"
+    app:tabTextAppearance="@style/ButtomTab"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+    <android.support.design.widget.TabItem
+        android:text="牙宝宝"
+        android:icon="@drawable/teeth_unselected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <android.support.design.widget.TabItem
+        android:text="文章"
+        android:icon="@drawable/articles_unselected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <android.support.design.widget.TabItem
+        android:text="我的"
+        android:icon="@drawable/user_unselected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</android.support.design.widget.TabLayout>
+</LinearLayout>
+
+    <!--app:tabBackground="@color/buttomTabColor"-->
