@@ -6,4 +6,5 @@
     <color name="colorIndicator">#42A5F2</color>
     <color name="buttomTabColor">#CFDEEB</color>
     <color name="searchbar">#D6D7D7</color>
+    <color name="strokecolor">#D9D9D9</color>
 </resources>

@@ -11,6 +11,9 @@ import android.widget.TextView;
 import java.util.List;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
+    //文章需要包含图片、标题、时间、（内容简介）
+    //文章需要一个类
+    //文章借口需要根据具体数据重写
     private List<String> articles;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -28,7 +31,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_page, null, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_page, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

@@ -2,6 +2,7 @@ package com.example.zjubme.teethmanagement;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,12 +13,12 @@ import android.view.ViewGroup;
 import java.util.List;
 
 public class ViewPagerAdapter extends PagerAdapter {
-    private String[] titles;
+    public static final int[] viewsId = {R.id.recyclerview_page, R.id.recyclerview_page_1, R.id.recyclerview_page_2};
+    private static final String[] titles = {"矫正入门", "牙套生活", "效果保持"};//tab titles
     private List<View> pages;
 
-    public ViewPagerAdapter(String[] titles, List<View> pages){
+    public ViewPagerAdapter(List<View> pages){
         super();
-        this.titles = titles;
         this.pages = pages;
     }
 
@@ -33,13 +34,9 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull final ViewGroup container, int position) {
         container.addView(pages.get(position));
-        RecyclerView recyclerView = (RecyclerView)container.findViewById(Pages.viewsId[position]);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(container.getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        ArticleAdapter adapter = new ArticleAdapter(Pages.article.get(position).getArticle());
-        recyclerView.setAdapter(adapter);
+        onCreatePageList(container, position);
         return pages.get(position);
     }
 
@@ -53,6 +50,16 @@ public class ViewPagerAdapter extends PagerAdapter {
     //tab title is associated with
     public CharSequence getPageTitle(int position) {
         return titles[position];
+    }
+
+    public void onCreatePageList(final ViewGroup container, int position){
+        RecyclerView recyclerView = (RecyclerView)container.findViewById(viewsId[position]);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(container.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new SpaceItemDecoration(20, 20));//manage item distance
+        ArticleAdapter adapter = new ArticleAdapter(Pages.article.get(position).getArticle());
+        recyclerView.setAdapter(adapter);
+
     }
 
 }

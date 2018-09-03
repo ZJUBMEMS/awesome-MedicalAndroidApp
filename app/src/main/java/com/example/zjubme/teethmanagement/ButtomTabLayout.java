@@ -13,6 +13,7 @@ import java.util.jar.Attributes;
 public class ButtomTabLayout extends LinearLayout{
     public ButtomTabLayout(final Context context, AttributeSet attrs){
         super(context, attrs);
+
         LayoutInflater.from(context).inflate(R.layout.buttomtab_change, this);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.buttom_tab);
 

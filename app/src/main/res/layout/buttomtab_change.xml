@@ -29,5 +29,3 @@
 
 </android.support.design.widget.TabLayout>
 </LinearLayout>
-
-    <!--app:tabBackground="@color/buttomTabColor"-->

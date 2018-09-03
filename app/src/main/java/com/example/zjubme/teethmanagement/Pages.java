@@ -26,9 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pages extends AppCompatActivity {
-    private static final String[] titles = {"矫正入门", "牙套生活", "效果保持"};
-    private static final int[] views = {R.layout.recyclerview_page, R.layout.recyclerview_page_1, R.layout.recyclerview_page_2};
-    public static final int[] viewsId = {R.id.recyclerview_page, R.id.recyclerview_page_1, R.id.recyclerview_page_2};
+    private static final int[] views = {R.layout.recyclerview_page, R.layout.recyclerview_page_1, R.layout.recyclerview_page_2};//views in viewPager
     private List<View> pages = new ArrayList<View>();
     private List<String> articles = new ArrayList<String>();
     private List<String> articles1 = new ArrayList<String>();
@@ -48,9 +46,9 @@ public class Pages extends AppCompatActivity {
 
     public void initArticles(){
         for(int i = 0; i < 100; i++){
-            articles.add("apple");
-            articles1.add("pear");
-            articles2.add("watermelon");
+            articles.add("appleappleappleappleappleappleappleappleappleappleapple");
+            articles1.add("pearpearpearpearpearpearpearpearpearpearpearpearpear");
+            articles2.add("watermelonwatermelonwatermelonwatermelonwatermelonwatermelonwatermelonwatermelon");
         }
         article.add(new Page(articles));
         article.add(new Page(articles1));
@@ -62,7 +60,7 @@ public class Pages extends AppCompatActivity {
         setContentView(R.layout.activity_pages);
         hideActionBar();
         initSearchView();
-        initArticles();//will be replaced
+        initArticles();//需要重写
         initViewPages();
         initTablayoutAndViewPager();
     }
@@ -88,7 +86,7 @@ public class Pages extends AppCompatActivity {
     private void initTablayoutAndViewPager(){
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout_page);
         ViewPager viewPager = (ViewPager)findViewById(R.id.view_pager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(titles, pages);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(pages);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }

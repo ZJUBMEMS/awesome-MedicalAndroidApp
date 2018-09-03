@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Search extends AppCompatActivity {
 
@@ -15,17 +16,12 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_page);
         hideActionBar();
-        SearchView searchView = (SearchView)findViewById(R.id.bar_search);
-        searchView.setIconifiedByDefault(false);
-        TextView textView = (TextView)findViewById(R.id.cancel);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Search.this, Pages.class);
-                startActivity(intent);
-            }
-        });
 
+        //init Search Component
+        SearchView searchView = (SearchView)findViewById(R.id.bar_search);
+        TextView cancel = (TextView)findViewById(R.id.cancel);
+        SearchComponent searchComponent = new SearchComponent(searchView, Search.this, cancel);
+        searchComponent.init();
     }
 
     private void hideActionBar(){
@@ -34,4 +30,5 @@ public class Search extends AppCompatActivity {
             actionBar.hide();
         }
     }
+
 }
