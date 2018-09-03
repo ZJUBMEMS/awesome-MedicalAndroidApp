@@ -2,22 +2,20 @@ package com.example.zjubme.teethmanagement;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
-public class ViewPagerAdapter extends PagerAdapter {
+public class ArticleViewPagerAdapter extends PagerAdapter {
     public static final int[] viewsId = {R.id.recyclerview_page, R.id.recyclerview_page_1, R.id.recyclerview_page_2};
     private static final String[] titles = {"矫正入门", "牙套生活", "效果保持"};//tab titles
     private List<View> pages;
 
-    public ViewPagerAdapter(List<View> pages){
+    public ArticleViewPagerAdapter(List<View> pages){
         super();
         this.pages = pages;
     }
@@ -57,7 +55,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         LinearLayoutManager layoutManager = new LinearLayoutManager(container.getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new SpaceItemDecoration(20, 20));//manage item distance
-        ArticleAdapter adapter = new ArticleAdapter(Pages.article.get(position).getArticle());
+        ArticleAdapter adapter = new ArticleAdapter(ArticlePages.article.get(position).getArticle());
         recyclerView.setAdapter(adapter);
 
     }

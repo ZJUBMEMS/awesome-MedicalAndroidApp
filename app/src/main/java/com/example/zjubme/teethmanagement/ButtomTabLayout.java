@@ -4,11 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-
-import java.util.jar.Attributes;
 
 public class ButtomTabLayout extends LinearLayout{
     public ButtomTabLayout(final Context context, AttributeSet attrs){
@@ -17,11 +14,11 @@ public class ButtomTabLayout extends LinearLayout{
         LayoutInflater.from(context).inflate(R.layout.buttomtab_change, this);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.buttom_tab);
 
-        if(getContext().getClass() == MainActivity.class){
+        if(getContext().getClass() == HomePage.class){
             tabLayout.getTabAt(0).setIcon(R.drawable.teeth);
             tabLayout.getTabAt(0).select();
         }
-        else if(getContext().getClass() == Pages.class){
+        else if(getContext().getClass() == ArticlePages.class){
             tabLayout.getTabAt(1).setIcon(R.drawable.articles);
             tabLayout.getTabAt(1).select();
         }
@@ -35,17 +32,17 @@ public class ButtomTabLayout extends LinearLayout{
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()){
                     case 0:
-                        if(getContext().getClass() == MainActivity.class){
+                        if(getContext().getClass() == HomePage.class){
                             break;
                         }
-                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        Intent intent = new Intent(getContext(), HomePage.class);
                         getContext().startActivity(intent);
                         break;
                     case 1:
-                        if(getContext().getClass() == Pages.class){
+                        if(getContext().getClass() == ArticlePages.class){
                             break;
                         }
-                        Intent intent1 = new Intent(getContext(), Pages.class);
+                        Intent intent1 = new Intent(getContext(), ArticlePages.class);
                         getContext().startActivity(intent1);
                         break;
                     case 2:
@@ -69,17 +66,17 @@ public class ButtomTabLayout extends LinearLayout{
             public void onTabReselected(TabLayout.Tab tab) {
                 switch (tab.getPosition()){
                     case 0:
-                        if(getContext().getClass() == MainActivity.class){
+                        if(getContext().getClass() == HomePage.class){
                             break;
                         }
-                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        Intent intent = new Intent(getContext(), HomePage.class);
                         getContext().startActivity(intent);
                         break;
                     case 1:
-                        if(getContext().getClass() == Pages.class){
+                        if(getContext().getClass() == ArticlePages.class){
                             break;
                         }
-                        Intent intent1 = new Intent(getContext(), Pages.class);
+                        Intent intent1 = new Intent(getContext(), ArticlePages.class);
                         getContext().startActivity(intent1);
                         break;
                     case 2:

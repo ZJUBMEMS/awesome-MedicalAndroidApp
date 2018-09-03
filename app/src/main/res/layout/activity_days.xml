@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nearWhite"
+    android:orientation="vertical"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="35dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="请完善佩戴信息"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:text="牙套总步数"
+                android:textColor="@color/text_color_main"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/totalSteps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="90dp"
+                android:layout_toLeftOf="@+id/clearTotalSteps"
+                android:background="@null"
+                android:hint="请输入疗程所需佩戴步数"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/text_color_content"
+                android:textColorHint="@color/text_color_hint"
+
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/clearTotalSteps"
+                android:layout_width="19dp"
+                android:layout_height="27dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="2dp"
+                android:src="@drawable/pic1" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/nowSteps"
+                android:text="正在佩戴"
+                android:textColor="@color/text_color_main"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/nowSteps"
+                android:layout_width="211dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/howMuchNowSteps"
+                android:background="@null"
+                android:hint="请输入已完成的佩戴步数"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/text_color_content"
+
+                android:textColorHint="@color/text_color_hint"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/howMuchNowSteps"
+                android:layout_width="43dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/clearNowSteps"
+                android:text="步"
+                android:textColor="@color/text_color_main"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/clearNowSteps"
+                android:layout_width="19dp"
+                android:layout_height="27dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="2dp"
+                android:src="@drawable/pic1" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/todayHours"
+                android:text="今日已佩戴"
+                android:textColor="@color/text_color_main"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/todayHours"
+                android:layout_width="201dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/howMuchTodayHours"
+                android:background="@null"
+                android:hint="请输入今日佩戴小时数"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/text_color_content"
+
+                android:textColorHint="@color/text_color_hint"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/howMuchTodayHours"
+                android:layout_width="43dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/clearTodayHours"
+                android:text="小时"
+                android:textColor="@color/text_color_main"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/clearTodayHours"
+                android:layout_width="19dp"
+                android:layout_height="27dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="2dp"
+                android:src="@drawable/pic1" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_DaysAc_to_DurationAc"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fillet_button_white"
+        android:text="下一步"/>
+
+
+
+
+</LinearLayout>

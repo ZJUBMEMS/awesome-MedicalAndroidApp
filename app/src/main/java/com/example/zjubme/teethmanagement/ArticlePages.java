@@ -1,31 +1,19 @@
 package com.example.zjubme.teethmanagement;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.SearchView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pages extends AppCompatActivity {
+public class ArticlePages extends AppCompatActivity {
     private static final int[] views = {R.layout.recyclerview_page, R.layout.recyclerview_page_1, R.layout.recyclerview_page_2};//views in viewPager
     private List<View> pages = new ArrayList<View>();
     private List<String> articles = new ArrayList<String>();
@@ -57,7 +45,7 @@ public class Pages extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pages);
+        setContentView(R.layout.article_pages);
         hideActionBar();
         initSearchView();
         initArticles();//需要重写
@@ -77,7 +65,7 @@ public class Pages extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Pages.this, Search.class);
+                Intent intent = new Intent(ArticlePages.this, Search.class);
                 startActivity(intent);
             }
         });
@@ -86,7 +74,7 @@ public class Pages extends AppCompatActivity {
     private void initTablayoutAndViewPager(){
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout_page);
         ViewPager viewPager = (ViewPager)findViewById(R.id.view_pager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(pages);
+        ArticleViewPagerAdapter adapter = new ArticleViewPagerAdapter(pages);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }

@@ -7,4 +7,12 @@
     <color name="buttomTabColor">#CFDEEB</color>
     <color name="searchbar">#D6D7D7</color>
     <color name="strokecolor">#D9D9D9</color>
+    <color name="colaorNew">#ffffff</color>
+    <color name="text_color_content">#716f6f</color>
+    <color name="white">#ffffff</color>
+    <color name="nearWhite">#e2ecec</color>
+    <color name="text_color_main">#6b6a6a</color>
+    <color name="text_color_hint">#9c9a9a</color>
+    <color name="red_light">#e40a0a</color>
+    <color name="backgroundOfDaysActicity">#d4eef4</color>
 </resources>

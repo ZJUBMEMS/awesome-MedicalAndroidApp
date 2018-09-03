@@ -2,11 +2,8 @@ package com.example.zjubme.teethmanagement;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,7 +72,7 @@ public class SearchComponent {
             cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, Pages.class);
+                    Intent intent = new Intent(context, ArticlePages.class);
                     context.startActivity(intent);
                 }
             });
