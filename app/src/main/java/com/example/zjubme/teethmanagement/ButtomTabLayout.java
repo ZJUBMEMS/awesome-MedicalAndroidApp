@@ -22,7 +22,7 @@ public class ButtomTabLayout extends LinearLayout{
             tabLayout.getTabAt(1).setIcon(R.drawable.articles);
             tabLayout.getTabAt(1).select();
         }
-        else if(getContext().getClass() == MainActivity.class){
+        else if(getContext().getClass() == Mine.class){
             tabLayout.getTabAt(2).setIcon(R.drawable.user);
             tabLayout.getTabAt(2).select();
         }
@@ -46,10 +46,10 @@ public class ButtomTabLayout extends LinearLayout{
                         getContext().startActivity(intent1);
                         break;
                     case 2:
-                        if(getContext().getClass() == MainActivity.class){
+                        if(getContext().getClass() == Mine.class){
                             break;
                         }
-                        Intent intent2 = new Intent(getContext(), MainActivity.class);
+                        Intent intent2 = new Intent(getContext(), Mine.class);
                         getContext().startActivity(intent2);
                         break;
                         default:
@@ -80,10 +80,10 @@ public class ButtomTabLayout extends LinearLayout{
                         getContext().startActivity(intent1);
                         break;
                     case 2:
-                        if(getContext().getClass() == MainActivity.class){
+                        if(getContext().getClass() == Mine.class){
                             break;
                         }
-                        Intent intent2 = new Intent(getContext(), MainActivity.class);
+                        Intent intent2 = new Intent(getContext(), Mine.class);
                         getContext().startActivity(intent2);
                         break;
                     default:

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Mine">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_mine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorIndicator"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <ImageButton
+                android:id="@+id/image_Backing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="0dp"
+                android:background="@color/colorIndicator"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+
+            <TextView
+                android:id="@+id/text_mine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="28dp"
+                android:text="@string/text_mine" />
+
+            <ImageButton
+                android:id="@+id/image_Setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="0dp"
+                android:background="@color/colorIndicator"
+                app:srcCompat="?android:attr/listChoiceIndicatorMultiple" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_loginstatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_mine">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <ImageButton
+                android:id="@+id/image_Avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="0dp"
+                android:background="@color/white"
+                app:srcCompat="?android:attr/listChoiceIndicatorSingle" />
+
+
+            <TextView
+                android:id="@+id/text_loginstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="24dp"
+                android:layout_toEndOf="@+id/image_Avatar"
+                android:background="@color/white"
+                android:text="@string/text_loginstatus"
+                android:textSize="24dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_blankmine"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_loginstatus">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_personalinformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_blankmine">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/image_personleft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="0dp"
+                android:background="@color/white"
+                app:srcCompat="?android:attr/listChoiceIndicatorSingle" />
+
+
+            <TextView
+                android:id="@+id/text_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="24dp"
+                android:layout_toEndOf="@+id/image_personleft"
+                android:background="@color/white"
+                android:text="@string/text_person"
+                android:textSize="24dp" />
+
+            <ImageView
+                android:id="@+id/image_personright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="0dp"
+                android:background="@color/white"
+                app:srcCompat="?android:attr/listChoiceIndicatorMultiple" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_selfhelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_personalinformation">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/image_selfhelpleft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="0dp"
+                android:background="@color/white"
+                app:srcCompat="?android:attr/listChoiceIndicatorSingle" />
+
+
+            <TextView
+                android:id="@+id/text_selfhelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="24dp"
+                android:layout_toEndOf="@+id/image_selfhelpleft"
+                android:background="@color/white"
+                android:text="@string/text_selfhelp"
+                android:textSize="24dp" />
+
+            <ImageView
+                android:id="@+id/image_selfhelpright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="0dp"
+                android:background="@color/white"
+                app:srcCompat="?android:attr/listChoiceIndicatorMultiple" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_braces"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_selfhelp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/image_bracesleft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="0dp"
+                android:background="@color/white"
+                app:srcCompat="?android:attr/listChoiceIndicatorSingle" />
+
+
+            <TextView
+                android:id="@+id/text_braces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="24dp"
+                android:layout_toEndOf="@+id/image_bracesleft"
+                android:background="@color/white"
+                android:text="@string/text_braces"
+                android:textSize="24dp" />
+
+            <ImageView
+                android:id="@+id/image_bracesright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="0dp"
+                android:background="@color/white"
+                app:srcCompat="?android:attr/listChoiceIndicatorMultiple" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <com.example.zjubme.teethmanagement.ButtomTabLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.example.zjubme.teethmanagement.ButtomTabLayout>
+
+</android.support.constraint.ConstraintLayout>

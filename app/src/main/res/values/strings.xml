@@ -8,4 +8,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="button_personalinformation">个人资料</string>
+    <string name="text_loginstatus">登录状态（点击注册）</string>
+    <string name="text_mine">我的</string>
+    <string name="text_person">个人资料</string>
+    <string name="text_selfhelp">自助牙医诊断</string>
+    <string name="text_braces">牙套管家</string>
 </resources>
