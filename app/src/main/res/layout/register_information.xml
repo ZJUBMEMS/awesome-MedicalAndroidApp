@@ -39,6 +39,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focuse
                     android:padding="15dp">
 
                     <TextView
@@ -152,7 +153,7 @@
                         android:layout_toLeftOf="@+id/clearGender"
                         android:background="@null"
                         android:digits="男女"
-                        android:hint="请输入性别"
+                        android:hint="请输入性别:男/女"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textColor="@color/text_color_content"
@@ -198,8 +199,8 @@
                         android:layout_marginLeft="94dp"
                         android:layout_toLeftOf="@+id/clearBirthDay"
                         android:background="@null"
-                        android:digits="男女"
-                        android:hint="请输入出生日期"
+                        android:digits="0123456789/"
+                        android:hint="请输入出生日期:年/月/日"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textColor="@color/text_color_content"
@@ -250,6 +251,7 @@
                         android:layout_toLeftOf="@+id/clearPhone"
                         android:background="@null"
                         android:hint="请输入预留手机号码"
+                        android:inputType="number"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textColor="@color/text_color_content"
@@ -296,6 +298,7 @@
                         android:layout_toLeftOf="@+id/clearCaptcha"
                         android:background="@null"
                         android:hint="请输入验证码"
+                        android:focusedByDefault="false"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textColor="@color/text_color_content"

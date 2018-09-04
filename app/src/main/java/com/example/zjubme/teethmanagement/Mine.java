@@ -60,7 +60,7 @@ public class Mine extends AppCompatActivity {
         linearLayout_loginstatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Mine.this, Mine.class);
+                Intent intent = new Intent(Mine.this, RegisterInformation.class);
                 startActivity(intent);
             }
         });
