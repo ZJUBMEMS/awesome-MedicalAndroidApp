@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class SelectTypeActivity extends AppCompatActivity {
 
     @Override
@@ -20,5 +22,24 @@ public class SelectTypeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button button1 = (Button) findViewById(R.id.button_SelectAc_to_DurationAc);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SelectTypeActivity.this, DurationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button button2 = (Button) findViewById(R.id.button_SelectAc_to_DurationAc_1);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SelectTypeActivity.this, DurationActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

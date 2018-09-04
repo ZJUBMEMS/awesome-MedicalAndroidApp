@@ -119,7 +119,7 @@
 
 
     <Button
-        android:id="@+id/button_DaysAc_to_DurationAc"
+        android:id="@+id/finishsettings"
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
