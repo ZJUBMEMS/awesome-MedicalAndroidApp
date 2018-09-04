@@ -9,27 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ArticlePages" />
+        <activity android:name=".Search" />
+        <activity android:name=".DiagnoseOneself" />
+        <activity android:name=".HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ArticlePages" />
-        <activity android:name=".Search" />
-        <activity android:name=".DiagnoseOneself"></activity>
-        <activity android:name=".HomePage"/>
         <activity android:name=".MessageListFragment" />
         <activity android:name=".MessageListFragmentPagerAdepter" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".MessageContent" />
-        <activity android:name=".CalendarActivity"></activity>
+        <activity android:name=".CalendarActivity" />
         <activity android:name=".SelectTypeActivity" />
         <activity android:name=".DaysActivity" />
         <activity android:name=".DurationActivity" />
-        <activity android:name=".LogActivity"></activity>
-        <activity android:name=".RegisterInformation"/>
+        <activity android:name=".LogActivity" />
+        <activity android:name=".RegisterInformation" />
+        <activity android:name=".Mine"></activity>
     </application>
 
 </manifest>

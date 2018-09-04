@@ -41,7 +41,7 @@
                 android:background="@drawable/fillet_button"/>
 
             <Button
-                android:id="@+id/button_SelectAc_to_DaysAc_2"
+                android:id="@+id/button_SelectAc_to_DurationAc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -50,7 +50,7 @@
                 android:background="@drawable/fillet_button" />
 
             <Button
-                android:id="@+id/button_SelectAc_to_DaysAc_3"
+                android:id="@+id/button_SelectAc_to_DurationAc_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
