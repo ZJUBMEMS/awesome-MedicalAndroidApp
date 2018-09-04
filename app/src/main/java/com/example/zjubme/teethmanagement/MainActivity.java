@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.avos.avoscloud.AVObject;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,5 +22,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        AVObject testObject  = new AVObject("People");
+        testObject.put("age", 18);
+        testObject.put("name", "Richard");
+        testObject.saveInBackground();
     }
 }
