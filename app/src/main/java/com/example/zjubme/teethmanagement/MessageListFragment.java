@@ -1,5 +1,6 @@
 package com.example.zjubme.teethmanagement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -37,8 +38,7 @@ public class MessageListFragment extends Fragment {
             Messages messages = new Messages();
             messages.setTitle("Title" + i);
             messages.setTitle_context("content" + i);
-            messages.setContent("cooooooooooo");
-            messages.setImageId(R.drawable.message);
+            messages.setImageId(R.drawable.back);
             messagesList.add(messages);
         }
         return messagesList;
@@ -54,6 +54,7 @@ public class MessageListFragment extends Fragment {
         private List<Messages> mMessageList;
 
         class ViewHolder extends RecyclerView.ViewHolder{
+            View messageView;
             LinearLayout messageLinearlayout;
             TextView messageTitleText;
             TextView messageTitleText1;
@@ -61,6 +62,7 @@ public class MessageListFragment extends Fragment {
 
             public ViewHolder(View view){
                 super(view);
+                messageView = view;
                 messageLinearlayout = (LinearLayout)view.findViewById(R.id.message_linearlayout);
                 messageTitleText = (TextView)view.findViewById(R.id.message_title);
                 messageTitleText1 = (TextView)view.findViewById(R.id.message_content);
@@ -76,11 +78,15 @@ public class MessageListFragment extends Fragment {
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, parent, false);
             final ViewHolder holder = new ViewHolder(view);
-            view.setOnClickListener(new View.OnClickListener() {
+            holder.messageView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    Messages messages = mMessageList.get(holder.getAdapterPosition());
-                    MessageContent.actionStart(getActivity(), messages.getTitle(), messages.getContent());
+                public void onClick(View v) {
+                    int position = holder.getAdapterPosition();
+                    Messages messages = mMessageList.get(position);
+                    Intent intent = new Intent(getActivity(), MessageContent.class);
+                    intent.putExtra("account_name", messages.getTitle());
+                    intent.putExtra("others_msg",messages.getTitle_context());
+                    startActivity(intent);
                 }
             });
             return holder;
