@@ -2,11 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/nearWhite"
     android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
+    <LinearLayout
+        android:id="@+id/linearLayout_mine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorIndicator"
+        android:orientation="vertical">
 
-    >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
+            <ImageButton
+                android:id="@+id/duration_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="0dp"
+                android:background="@color/colorIndicator"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+            <TextView
+                android:id="@+id/self_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="20dp"
+                android:text="@string/text_braces" />
+
+        </RelativeLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +80,9 @@
                 android:layout_marginLeft="100dp"
                 android:layout_toLeftOf="@+id/clearStartTime"
                 android:background="@null"
+                android:padding="10dp"
                 android:hint="格式：年/月/日"
+                android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/text_color_content"
@@ -97,7 +130,10 @@
                 android:layout_marginLeft="100dp"
                 android:layout_toLeftOf="@+id/clearTermination"
                 android:background="@null"
+                android:padding="10dp"
                 android:hint="格式：年/月/日"
+                android:inputType="date
+"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/text_color_content"

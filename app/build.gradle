@@ -18,7 +18,7 @@ android {
     }
 
     //为了解决部分第三方库重复打包了META-INF的问题
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
@@ -44,22 +44,22 @@ dependencies {
 //    implementation ('com.android.support:support-v4:21.0.3')
 
     // LeanCloud 基础包
-    implementation ('cn.leancloud.android:avoscloud-sdk:v4.7.3')
+    implementation('cn.leancloud.android:avoscloud-sdk:v4.7.3')
 
     // 推送与即时通讯需要的包
-    implementation ('cn.leancloud.android:avoscloud-push:v4.7.3@aar'){transitive = true}
+    implementation('cn.leancloud.android:avoscloud-push:v4.7.3@aar') { transitive = true }
 
     // LeanCloud 统计包
-    implementation ('cn.leancloud.android:avoscloud-statistics:v4.7.3')
+    implementation('cn.leancloud.android:avoscloud-statistics:v4.7.3')
 
     // LeanCloud 用户反馈包
-    implementation ('cn.leancloud.android:avoscloud-feedback:v4.7.3@aar')
+    implementation('cn.leancloud.android:avoscloud-feedback:v4.7.3@aar')
 
     // avoscloud-sns：LeanCloud 第三方登录包
-    implementation ('cn.leancloud.android:avoscloud-sns:v4.7.3@aar')
-    implementation ('cn.leancloud.android:qq-sdk:1.6.1-leancloud')
+    implementation('cn.leancloud.android:avoscloud-sns:v4.7.3@aar')
+    implementation('cn.leancloud.android:qq-sdk:1.6.1-leancloud')
 
     // LeanCloud 应用内搜索包
-    implementation ('cn.leancloud.android:avoscloud-search:v4.7.3@aar')
+    implementation('cn.leancloud.android:avoscloud-search:v4.7.3@aar')
 
 }

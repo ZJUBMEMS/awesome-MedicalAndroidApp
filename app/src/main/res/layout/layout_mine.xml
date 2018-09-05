@@ -17,24 +17,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp">
-
-            <ImageButton
-                android:id="@+id/image_Backing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="0dp"
-                android:background="@color/colorIndicator"
-                app:srcCompat="?attr/actionModeCloseDrawable" />
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/text_mine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:text="@string/text_mine" />
 
             <ImageButton
