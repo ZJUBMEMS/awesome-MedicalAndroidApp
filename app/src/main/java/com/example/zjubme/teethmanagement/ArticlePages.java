@@ -46,6 +46,8 @@ public class ArticlePages extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.article_pages);
+        BottomTabLayout bottomTabLayout = (BottomTabLayout)findViewById(R.id.bottom_layout);
+        bottomTabLayout.refreshSelect();
         hideActionBar();
         initSearchView();
         initArticles();//需要重写
@@ -84,5 +86,12 @@ public class ArticlePages extends AppCompatActivity {
         for(int i = 0; i < views.length;i++){
             pages.add(layoutInflater.inflate(views[i], null, false));
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        BottomTabLayout bottomTabLayout = (BottomTabLayout)findViewById(R.id.bottom_layout);
+        bottomTabLayout.refreshSelect();
     }
 }

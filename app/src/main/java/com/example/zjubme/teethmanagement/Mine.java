@@ -8,8 +8,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +18,8 @@ public class Mine extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_mine);
+        BottomTabLayout bottomTabLayout = (BottomTabLayout)findViewById(R.id.bottom_layout);
+        bottomTabLayout.refreshSelect();
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){
             actionBar.hide();
@@ -108,6 +108,12 @@ public class Mine extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+        BottomTabLayout bottomTabLayout = (BottomTabLayout)findViewById(R.id.bottom_layout);
+        bottomTabLayout.refreshSelect();
+        if(!checkConnect(bottomTabLayout)){
+            TextView logStatus = (TextView)findViewById(R.id.text_loginstatus);
+            logStatus.setText(R.string.text_loginstatus);
+        }
         if(checkWhetherLogin()){
             TextView logStatus = (TextView)findViewById(R.id.text_loginstatus);
             logStatus.setText(R.string.log_out);

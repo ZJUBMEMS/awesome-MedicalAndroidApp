@@ -36,9 +36,11 @@
         <!-- 反馈组件（需要加入以下声明）START -->
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity"></activity>
         <!-- 反馈组件 END -->
-        <activity android:name=".ArticlePages" />
+        <activity android:name=".ArticlePages"
+            android:launchMode="singleTask"/>
         <activity android:name=".Search" />
-        <activity android:name=".HomePage">
+        <activity android:name=".HomePage"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,8 +66,11 @@
             android:launchMode="singleTask"/>
         <activity android:name=".CuteActivity"
             android:launchMode="singleTask"></activity>
-        <activity android:name=".DentistDiagnosisActivity"
-            android:launchMode="singleTask"/>
+        <activity android:name=".DentistDiagnosisActivity" />
     </application>
 
 </manifest>
+
+
+    <!--android:largeHeap="true"-->
+    <!--android:hardwareAccelerated="false"-->
