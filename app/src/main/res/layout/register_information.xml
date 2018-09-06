@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/nearWhite"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
@@ -19,6 +19,39 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/linearLayout_mine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorIndicator"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageButton
+                        android:id="@+id/personal_information_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="0dp"
+                        android:background="@color/colorIndicator"
+                        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+                    <TextView
+                        android:id="@+id/personal_information"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="20dp"
+                        android:text="@string/personal_information" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,6 +72,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:padding="15dp">
 
                     <TextView
@@ -85,7 +120,9 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp">
+                    android:padding="15dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -131,7 +168,9 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp">
+                    android:padding="15dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -152,7 +191,7 @@
                         android:layout_toLeftOf="@+id/clearGender"
                         android:background="@null"
                         android:digits="男女"
-                        android:hint="请输入性别"
+                        android:hint="请输入性别:男/女"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textColor="@color/text_color_content"
@@ -178,7 +217,9 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp">
+                    android:padding="15dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -198,8 +239,8 @@
                         android:layout_marginLeft="94dp"
                         android:layout_toLeftOf="@+id/clearBirthDay"
                         android:background="@null"
-                        android:digits="男女"
-                        android:hint="请输入出生日期"
+                        android:inputType="date"
+                        android:hint="请输入出生日期:年/月/日"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textColor="@color/text_color_content"
@@ -229,7 +270,9 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp">
+                    android:padding="15dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -250,6 +293,7 @@
                         android:layout_toLeftOf="@+id/clearPhone"
                         android:background="@null"
                         android:hint="请输入预留手机号码"
+                        android:inputType="number"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textColor="@color/text_color_content"
@@ -267,71 +311,74 @@
 
                 </RelativeLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/text_color_content" />
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:background="@color/text_color_content" />-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="15dp">
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="15dp"-->
+                    <!--android:focusable="true"-->
+                    <!--android:focusableInTouchMode="true">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="5dp"
-                        android:text="验证码"
-                        android:textColor="@color/text_color_main"
-                        android:textSize="15sp" />
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentLeft="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_marginLeft="5dp"-->
+                        <!--android:text="验证码"-->
+                        <!--android:textColor="@color/text_color_main"-->
+                        <!--android:textSize="15sp" />-->
 
-                    <EditText
-                        android:id="@+id/et_captcha"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="94dp"
-                        android:layout_toLeftOf="@+id/clearCaptcha"
-                        android:background="@null"
-                        android:hint="请输入验证码"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:textColor="@color/text_color_content"
-                        android:textColorHint="@color/text_color_hint"
-                        android:textSize="15sp" />
+                    <!--<EditText-->
+                        <!--android:id="@+id/et_captcha"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_marginLeft="94dp"-->
+                        <!--android:layout_toLeftOf="@+id/clearCaptcha"-->
+                        <!--android:background="@null"-->
+                        <!--android:hint="请输入验证码"-->
+                        <!--android:focusedByDefault="false"-->
+                        <!--android:maxLines="1"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:textColor="@color/text_color_content"-->
+                        <!--android:textColorHint="@color/text_color_hint"-->
+                        <!--android:textSize="15sp" />-->
 
-                    <ImageView
-                        android:id="@+id/clearCaptcha"
-                        android:layout_width="20dp"
-                        android:layout_height="19dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@+id/getCaptcha_line"
-                        android:padding="2dp"
-                        android:src="@drawable/pic1" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/clearCaptcha"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="19dp"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_toLeftOf="@+id/getCaptcha_line"-->
+                        <!--android:padding="2dp"-->
+                        <!--android:src="@drawable/pic1" />-->
 
-                    <View
-                        android:id="@+id/getCaptcha_line"
-                        android:layout_width="1dp"
-                        android:layout_height="17dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_toLeftOf="@+id/getCaptcha"
-                        android:background="@color/red_light" />
+                    <!--<View-->
+                        <!--android:id="@+id/getCaptcha_line"-->
+                        <!--android:layout_width="1dp"-->
+                        <!--android:layout_height="17dp"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_marginLeft="20dp"-->
+                        <!--android:layout_marginRight="20dp"-->
+                        <!--android:layout_toLeftOf="@+id/getCaptcha"-->
+                        <!--android:background="@color/red_light" />-->
 
-                    <TextView
-                        android:id="@+id/getCaptcha"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="获取验证码"
-                        android:textColor="@color/text_color_main"
-                        android:textSize="15sp" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/getCaptcha"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:text="获取验证码"-->
+                        <!--android:textColor="@color/text_color_main"-->
+                        <!--android:textSize="15sp" />-->
 
-                </RelativeLayout>
+                <!--</RelativeLayout>-->
             </LinearLayout>
 
             <LinearLayout
