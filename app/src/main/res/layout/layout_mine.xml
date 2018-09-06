@@ -244,9 +244,10 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <com.example.zjubme.teethmanagement.ButtomTabLayout
+    <com.example.zjubme.teethmanagement.BottomTabLayout
+        android:id="@+id/bottom_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.example.zjubme.teethmanagement.ButtomTabLayout>
+        android:layout_height="wrap_content"></com.example.zjubme.teethmanagement.BottomTabLayout>
 
 </android.support.constraint.ConstraintLayout>
