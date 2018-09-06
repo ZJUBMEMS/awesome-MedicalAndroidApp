@@ -21,6 +21,7 @@ public class HomePage extends AppCompatActivity {
 
 
         //进入通知界面
+
         ImageButton imageButton = (ImageButton)findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener(){
             @Override

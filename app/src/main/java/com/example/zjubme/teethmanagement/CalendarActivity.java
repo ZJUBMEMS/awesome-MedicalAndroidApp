@@ -14,7 +14,7 @@ public class CalendarActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_calendar_layout);
-        CalendarView mCalendar = (CalendarView)findViewById(R.id.calendarView);
+        CalendarView mCalendar = (CalendarView)findViewById(R.id.calendar_view);
         mCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {//对日历添加点击事件
 
             @Override
