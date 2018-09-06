@@ -1,6 +1,7 @@
 package com.example.zjubme.teethmanagement;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,7 +30,13 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+//        initSharedPreferences();
+    }
 
+    private void initSharedPreferences(){
+        SharedPreferences.Editor logInFlag = getSharedPreferences("data", MODE_PRIVATE).edit();
+        logInFlag.putString("phone", "");
+        logInFlag.apply();
     }
 
 }

@@ -17,6 +17,3 @@ awesome medical android app
 * JAVA类名命名方式：MainActivity
 * 方法名命名方式: onCreate
 * layout及其他资源文件命名方式：search_page    home_page
-
-
-
