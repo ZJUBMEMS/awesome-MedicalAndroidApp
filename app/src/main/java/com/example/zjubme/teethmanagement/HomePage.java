@@ -30,6 +30,15 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+        //进入calendar界面
+        ImageButton todoButton = (ImageButton)findViewById(R.id.todo_button);
+        todoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomePage.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
