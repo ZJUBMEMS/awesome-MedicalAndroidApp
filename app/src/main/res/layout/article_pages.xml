@@ -18,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:id="@+id/view_search"
-        android:drawableLeft="@drawable/search"
         android:text="@string/search_pages"
         android:textSize="18sp">
     </Button>
