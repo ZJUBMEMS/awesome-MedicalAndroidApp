@@ -4,6 +4,7 @@
 
     <!-- 基础模块（必须加入以下声明）START -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -12,10 +13,10 @@
     <!-- 基础模块 END -->
     <application
         android:name=".MyLeanCloudApp"
-        android:largeHeap="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -35,12 +36,14 @@
 
 
         <!-- 反馈组件（需要加入以下声明）START -->
-        <activity android:name="com.avos.avoscloud.feedback.ThreadActivity"></activity>
+        <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
         <!-- 反馈组件 END -->
-        <activity android:name=".ArticlePages"
-            android:launchMode="singleTask"/>
+        <activity
+            android:name=".ArticlePages"
+            android:launchMode="singleTask" />
         <activity android:name=".Search" />
-        <activity android:name=".HomePage"
+        <activity
+            android:name=".HomePage"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,25 +56,29 @@
         <activity android:name=".MessageActivity" />
         <activity android:name=".MessageContent" />
         <activity android:name=".CalendarActivity" />
-        <activity android:name=".SelectTypeActivity"
-            android:launchMode="singleTask"/>
-        <activity android:name=".DaysActivity"
-            android:launchMode="singleTask"/>
-        <activity android:name=".DurationActivity"
-            android:launchMode="singleTask"/>
-        <activity android:name=".LogActivity"
-            android:launchMode="singleTask"/>
-        <activity android:name=".RegisterInformation"
-            android:launchMode="singleTask"/>
-        <activity android:name=".Mine"
-            android:launchMode="singleTask"/>
-        <activity android:name=".CuteActivity"
-            android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".SelectTypeActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".DaysActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".DurationActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".LogActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".RegisterInformation"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Mine"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".CuteActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".DentistDiagnosisActivity" />
+        <activity android:name=".WebView"></activity>
     </application>
 
-</manifest>
-
-
-    <!--android:largeHeap="true"-->
-    <!--android:hardwareAccelerated="false"-->
+</manifest> <!-- android:largeHeap="true" --><!-- android:hardwareAccelerated="false" -->
