@@ -23,32 +23,22 @@ import java.util.TimeZone;
 public class SignDayDecorator implements DayViewDecorator {
 
     private final Context context;
+    private CalendarDay calendarDay;
 
     public SignDayDecorator(Context context) {
         this.context = context;
     }
+    public SignDayDecorator(Context context, CalendarDay calendarDay) {
+        this.context = context;
+        this.calendarDay = calendarDay;
+    }
 
     @Override
     public boolean shouldDecorate(CalendarDay day) {
-        SimpleDateFormat dff = new SimpleDateFormat("yyyy:MM:dd");
-        dff.setTimeZone(TimeZone.getTimeZone("GMT+08"));
-        String curDate = dff.format(new Date());
-        final String currentDate[] = curDate.split(":");
-        int [] week = new int[3];
-        for (int i=0 ; i<currentDate.length ; i++ ){
-            week[i] = Integer.parseInt(currentDate[i]);
+        if ((day.getYear()==calendarDay.getYear())&&(day.getMonth()==calendarDay.getMonth())&&(day.getDay()==calendarDay.getDay())){
+            return true;
         }
-        int [] date= new int[3];
-        date[0] = day.getYear();
-        date[1] = day.getMonth()+1;
-        date[2] = day.getDay();
-        boolean isEqual = false;
-        for (int i = 0 ; i<currentDate.length; i++){
-            if (week[i] != date[i]){
-                return isEqual;
-            }
-        }
-        return true;
+        return false;
     }
 
     @Override

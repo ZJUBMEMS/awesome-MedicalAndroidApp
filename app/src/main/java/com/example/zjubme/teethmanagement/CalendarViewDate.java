@@ -21,6 +21,9 @@ public class CalendarViewDate {
         this.calendarDay = calendarDay;
     }
 
+    public CalendarViewDate() {
+    }
+
     public CalendarViewDate(int DATE_SELECTED, Date date) {
         this.DATE_SELECTED = DATE_SELECTED;
         this.date = date;

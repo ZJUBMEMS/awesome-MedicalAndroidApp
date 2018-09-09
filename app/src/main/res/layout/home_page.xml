@@ -153,5 +153,6 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/button"
         app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintTop_toTopOf="@+id/button"
+        android:max="240"/>
 </android.support.constraint.ConstraintLayout>
