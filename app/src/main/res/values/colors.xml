@@ -17,5 +17,7 @@
     <color name="backgroundOfDaysActicity">#d4eef4</color>
     <color name="submit_button">#00A524</color>
     <color name="pagebackground">#EEEEEE</color>
+    <color name="fontcolor">#000000</color>
+    <color name="diagnose_message_green">#74b76f</color>
 </resources>
 

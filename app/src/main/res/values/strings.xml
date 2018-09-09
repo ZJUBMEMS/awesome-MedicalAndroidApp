@@ -28,4 +28,5 @@
     <string name="inputBirthday">请输入你的生日:年/月/日</string>
     <string name="text_camera_1">1.拍照</string>
     <string name="text_camera_description">请上传示意照片，最好是朋友协助拍摄，医生能够更加系统地了解您的口腔问题。</string>
+    <string name="diagnoseBack">诊断结果</string>
 </resources>

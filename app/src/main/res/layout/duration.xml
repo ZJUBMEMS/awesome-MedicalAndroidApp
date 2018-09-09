@@ -11,7 +11,7 @@
         android:id="@+id/linearLayout_mine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorIndicator"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -26,7 +26,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="0dp"
-                android:background="@color/colorIndicator"
+                android:background="@color/colorPrimary"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
             <TextView
                 android:id="@+id/self_help"
