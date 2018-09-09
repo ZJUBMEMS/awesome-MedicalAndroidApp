@@ -86,7 +86,7 @@ public class ArticlePages extends AppCompatActivity {
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
-                if(list == null){
+                if(list.size() == 0){
                     return;
                 }
                 if(e == null){

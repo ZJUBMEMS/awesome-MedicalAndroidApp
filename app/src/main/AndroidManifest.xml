@@ -40,45 +40,62 @@
         <!-- 反馈组件 END -->
         <activity
             android:name=".ArticlePages"
-            android:launchMode="singleTask" />
-        <activity android:name=".Search" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Search"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".HomePage"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MessageListFragment" />
-        <activity android:name=".MessageListFragmentPagerAdepter" />
-        <activity android:name=".MessageActivity" />
-        <activity android:name=".MessageContent" />
-        <activity android:name=".CalendarActivity" />
+        <activity android:name=".MessageListFragment"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MessageListFragmentPagerAdepter"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MessageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MessageContent"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CalendarActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SelectTypeActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask" />
         <activity
             android:name=".DaysActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask" />
         <activity
             android:name=".DurationActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask" />
         <activity
             android:name=".LogActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask" />
         <activity
             android:name=".RegisterInformation"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask" />
         <activity
             android:name=".Mine"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask" />
         <activity
             android:name=".CuteActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask" />
-        <activity android:name=".DentistDiagnosisActivity" />
-        <activity android:name=".WebView"></activity>
+        <activity android:name=".DentistDiagnosisActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".WebView"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest> <!-- android:largeHeap="true" --><!-- android:hardwareAccelerated="false" -->
