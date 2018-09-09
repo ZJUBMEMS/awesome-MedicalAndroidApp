@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#73C4EF</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorIndicator">#42A5F2</color>
@@ -16,4 +16,8 @@
     <color name="red_light">#e40a0a</color>
     <color name="backgroundOfDaysActicity">#d4eef4</color>
     <color name="submit_button">#00A524</color>
+    <color name="pagebackground">#EEEEEE</color>
+    <color name="fontcolor">#000000</color>
+    <color name="diagnose_message_green">#74b76f</color>
 </resources>
+

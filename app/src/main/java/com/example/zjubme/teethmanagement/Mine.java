@@ -106,8 +106,8 @@ public class Mine extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onStart() {
+        super.onStart();
         BottomTabLayout bottomTabLayout = (BottomTabLayout)findViewById(R.id.bottom_layout);
         bottomTabLayout.refreshSelect();
         if(!checkConnect(bottomTabLayout)){

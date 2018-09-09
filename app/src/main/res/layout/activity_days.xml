@@ -12,7 +12,7 @@
         android:id="@+id/linearLayout_mine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorIndicator"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -27,7 +27,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="0dp"
-                android:background="@color/colorIndicator"
+                android:background="@color/colorPrimary"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
             <TextView
                 android:id="@+id/self_help"
@@ -182,19 +182,19 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/todayHours"
-                android:text="今日已佩戴"
+                android:layout_toLeftOf="@+id/daysPerStep"
+                android:text="一步对应疗程"
                 android:textColor="@color/text_color_main"
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/todayHours"
+                android:id="@+id/daysPerStep"
                 android:layout_width="201dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/howMuchTodayHours"
                 android:background="@null"
-                android:hint="请输入今日佩戴小时数"
+                android:hint="请输入一步对应天数"
                 android:inputType="number"
                 android:padding="10dp"
                 android:maxLines="1"
@@ -210,7 +210,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/clearTodayHours"
-                android:text="小时"
+                android:text="天"
                 android:textColor="@color/text_color_main"
                 android:textSize="15sp" />
 
