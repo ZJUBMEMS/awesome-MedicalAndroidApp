@@ -62,4 +62,6 @@ dependencies {
     // LeanCloud 应用内搜索包
     implementation('cn.leancloud.android:avoscloud-search:v4.7.3@aar')
 
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

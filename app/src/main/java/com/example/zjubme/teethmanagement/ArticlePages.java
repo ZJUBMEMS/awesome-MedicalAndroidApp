@@ -94,7 +94,7 @@ public class ArticlePages extends AppCompatActivity {
                         AVObject avObject = list.get(i);
                         viewPages.get(Integer.parseInt(avObject.getString("types")))
                                 .add(new Article(avObject.getString("title"), avObject.getString("date"),
-                                        avObject.getString("author"), avObject.getString("url")));
+                                        avObject.getString("author"), avObject.getString("url"), avObject.getString("image")));
                     }
                     initViewPages();
                     initTablayoutAndViewPager();

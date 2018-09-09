@@ -16,4 +16,6 @@
     <color name="red_light">#e40a0a</color>
     <color name="backgroundOfDaysActicity">#d4eef4</color>
     <color name="submit_button">#00A524</color>
+    <color name="pagebackground">#EEEEEE</color>
 </resources>
+
