@@ -6,9 +6,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.FindCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,32 +23,9 @@ import java.util.List;
 public class ArticlePages extends AppCompatActivity {
     private static final int[] views = {R.layout.recyclerview_page, R.layout.recyclerview_page_1, R.layout.recyclerview_page_2};//views in viewPager
     private List<View> pages = new ArrayList<View>();
-    private List<String> articles = new ArrayList<String>();
-    private List<String> articles1 = new ArrayList<String>();
-    private List<String> articles2 = new ArrayList<String>();
-    public static List<Page> article = new ArrayList<Page>();
+    private List<ArrayList<Article>> viewPages = new ArrayList<>();
+    private ArrayList<Article> articles;
 
-    class Page{
-        private List<String> article;
-        public Page(List<String> article){
-            this.article = article;
-        }
-
-        public List<String> getArticle() {
-            return article;
-        }
-    }
-
-    public void initArticles(){
-        for(int i = 0; i < 100; i++){
-            articles.add("appleappleappleappleappleappleappleappleappleappleapple");
-            articles1.add("pearpearpearpearpearpearpearpearpearpearpearpearpear");
-            articles2.add("watermelonwatermelonwatermelonwatermelonwatermelonwatermelonwatermelonwatermelon");
-        }
-        article.add(new Page(articles));
-        article.add(new Page(articles1));
-        article.add(new Page(articles2));
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +34,7 @@ public class ArticlePages extends AppCompatActivity {
         bottomTabLayout.refreshSelect();
         hideActionBar();
         initSearchView();
-        initArticles();//需要重写
-        initViewPages();
-        initTablayoutAndViewPager();
+        initArticles();
     }
 
     private void hideActionBar(){
@@ -76,7 +58,7 @@ public class ArticlePages extends AppCompatActivity {
     private void initTablayoutAndViewPager(){
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout_page);
         ViewPager viewPager = (ViewPager)findViewById(R.id.view_pager);
-        ArticleViewPagerAdapter adapter = new ArticleViewPagerAdapter(pages);
+        ArticleViewPagerAdapter adapter = new ArticleViewPagerAdapter(pages, viewPages);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -89,9 +71,35 @@ public class ArticlePages extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onStart() {
+        super.onStart();
         BottomTabLayout bottomTabLayout = (BottomTabLayout)findViewById(R.id.bottom_layout);
         bottomTabLayout.refreshSelect();
+    }
+
+    private void initArticles(){
+        for(int i = 0;i < 3;i++){
+            viewPages.add(new ArrayList<Article>());
+        }
+        AVQuery<AVObject> query = new AVQuery<AVObject>("articles");
+        query.orderByDescending("createdAt");
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                if(list.size() == 0){
+                    return;
+                }
+                if(e == null){
+                    for(int i = 0; i < list.size(); i++){
+                        AVObject avObject = list.get(i);
+                        viewPages.get(Integer.parseInt(avObject.getString("types")))
+                                .add(new Article(avObject.getString("title"), avObject.getString("date"),
+                                        avObject.getString("author"), avObject.getString("url"), avObject.getString("image")));
+                    }
+                    initViewPages();
+                    initTablayoutAndViewPager();
+                }
+            }
+        });
     }
 }

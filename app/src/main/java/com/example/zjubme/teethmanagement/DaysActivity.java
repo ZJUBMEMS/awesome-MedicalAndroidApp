@@ -8,11 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class DaysActivity extends AppCompatActivity {
-    private int[] textId = {R.id.totalSteps, R.id.nowSteps, R.id.todayHours};
-    private String[] processName = {"totalSteps", "nowSteps", "todayHours"};
+    private int[] textId = {R.id.totalSteps, R.id.nowSteps, R.id.daysPerStep};
+    private int[] buttonId = {R.id.clearTotalSteps, R.id.clearNowSteps, R.id.clearTodayHours};
+    private HashMap<Integer, Integer> corId = new HashMap<>();
+    private String[] processName = {"totalSteps", "nowSteps", "daysPerStep"};
     private String total = "";
     private String now = "";
     @Override
@@ -21,6 +26,8 @@ public class DaysActivity extends AppCompatActivity {
         setContentView(R.layout.activity_days);
         hideActionBar();
         setBack();
+        initCorId();
+        setCancel();
         final String types = getIntent().getStringExtra("types");
         Button button = (Button)findViewById(R.id.button_DaysAc_to_DurationAc);
         button.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +41,7 @@ public class DaysActivity extends AppCompatActivity {
                         Toast.makeText(view.getContext(), "信息填写不完整", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if(textId[i] == R.id.todayHours){
+                    if(textId[i] == R.id.daysPerStep){
                         if(Integer.parseInt(editText.getText().toString()) > 24 || Integer.parseInt(editText.getText().toString()) < 0){
                             Toast.makeText(view.getContext(), "佩戴时间填写错误", Toast.LENGTH_SHORT).show();
                             return;
@@ -68,6 +75,25 @@ public class DaysActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.hide();
+        }
+    }
+
+    private void setCancel(){
+        for(int i = 0;i < buttonId.length;i++){
+            ImageView button = (ImageView) findViewById(buttonId[i]);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EditText editText = (EditText)findViewById(corId.get(view.getId()));
+                    editText.setText("");
+                }
+            });
+        }
+    }
+
+    private void initCorId(){
+        for(int i = 0;i < buttonId.length;i++){
+            corId.put(buttonId[i], textId[i]);
         }
     }
 }

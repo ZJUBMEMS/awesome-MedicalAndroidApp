@@ -105,8 +105,6 @@ public class CalendarActivity extends AppCompatActivity {
                 for (int i=1; i<d; i++){
                     CalendarDay day = CalendarDay.from(calendarDay1.getYear(), calendarDay1.getMonth(), calendarDay1.getDay()+i);
                     save(day,2);
-                    // 测试 SDK 是否正常工作的代码
-
                     NotSignDayDecorator notSignDayDecorator = new NotSignDayDecorator(CalendarActivity.this, day);
                     materialCalendarView.addDecorator(notSignDayDecorator);
                 }

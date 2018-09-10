@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -20,7 +21,8 @@ public class Search extends AppCompatActivity {
         //init Search Component
         SearchView searchView = (SearchView)findViewById(R.id.bar_search);
         TextView cancel = (TextView)findViewById(R.id.cancel);
-        SearchComponent searchComponent = new SearchComponent(searchView, Search.this, cancel);
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.search_result);
+        SearchComponent searchComponent = new SearchComponent(searchView, Search.this, cancel, recyclerView);
         searchComponent.init();
     }
 
