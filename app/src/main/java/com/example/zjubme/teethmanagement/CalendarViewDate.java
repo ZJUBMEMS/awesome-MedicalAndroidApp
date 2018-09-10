@@ -17,6 +17,10 @@ public class CalendarViewDate {
         return calendarDay;
     }
 
+    public CalendarViewDate(CalendarDay calendarDay) {
+        this.calendarDay = calendarDay;
+    }
+
     public void setCalendarDay(CalendarDay calendarDay) {
         this.calendarDay = calendarDay;
     }
