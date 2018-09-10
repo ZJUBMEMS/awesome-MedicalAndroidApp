@@ -60,13 +60,7 @@ public class CalendarActivity extends AppCompatActivity {
                         calendarViewdate.setDate(list.get(k).getDate("Date"));
                         calendarViewdate.setCalendarDay(CalendarDay.from(list.get(k).getDate("Date")));
                         calendarViewDateList.add(calendarViewdate);
-                        Log.d("yuyu", k+"");
-                        Log.d("yuyu", calendarViewdate.getDate()+"");
-                        Log.d("yuyum", calendarViewDateList.get(0).getDate()+"");
-                        Log.d("yuyuh", calendarViewDateList.get(k).getDate()+"");
                     }
-                    Log.d("yuyuk", calendarViewDateList.get(0).getDate()+"");
-                    Log.d("yuyul", calendarViewDateList.get(1).getDate()+"");
                     init();
                     click();
                 }
@@ -104,17 +98,6 @@ public class CalendarActivity extends AppCompatActivity {
                 for (int i=1; i<d; i++){
                     CalendarDay day = CalendarDay.from(calendarDay1.getYear(), calendarDay1.getMonth(), calendarDay1.getDay()+i);
                     save(day,2);
-                    // 测试 SDK 是否正常工作的代码
-                    AVObject testObject = new AVObject("TestObject");
-                    testObject.put("words","Hello World!");
-                    testObject.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(AVException e) {
-                            if(e == null){
-                                Log.d("saved","success!");
-                            }
-                        }
-                    });
                     NotSignDayDecorator notSignDayDecorator = new NotSignDayDecorator(CalendarActivity.this, day);
                     materialCalendarView.addDecorator(notSignDayDecorator);
                 }

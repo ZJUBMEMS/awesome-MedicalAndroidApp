@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TeethManagement</string>
+    <string name="app_name">正畸助手</string>
     <string name="search_pages">搜索文章</string>
     <string name="cancel">取消</string>
     <string name="title_1">牙套管家</string>
@@ -29,4 +29,5 @@
     <string name="text_camera_1">1.拍照</string>
     <string name="text_camera_description">请上传示意照片，最好是朋友协助拍摄，医生能够更加系统地了解您的口腔问题。</string>
     <string name="diagnoseBack">诊断结果</string>
+    <string name="messagelist">消息列表</string>
 </resources>
