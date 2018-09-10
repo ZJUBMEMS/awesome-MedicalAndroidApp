@@ -11,6 +11,18 @@ import java.util.Date;
 public class CalendarViewDate {
     private int DATE_SELECTED;
     private Date date;
+    private CalendarDay calendarDay;
+
+    public CalendarDay getCalendarDay() {
+        return calendarDay;
+    }
+
+    public void setCalendarDay(CalendarDay calendarDay) {
+        this.calendarDay = calendarDay;
+    }
+
+    public CalendarViewDate() {
+    }
 
     public CalendarViewDate(int DATE_SELECTED, Date date) {
         this.DATE_SELECTED = DATE_SELECTED;
