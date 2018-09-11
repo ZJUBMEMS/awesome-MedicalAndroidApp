@@ -1,12 +1,16 @@
 package com.example.zjubme.teethmanagement;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +28,7 @@ import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.GetCallback;
+import com.avos.avoscloud.SaveCallback;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -75,15 +80,38 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
     private ImageButton imageButton_6;
     private ImageButton imageButton_7;
     private ImageButton imageButton_8;
-
+    private String pic_1;
+    private String pic_2;
+    private String pic_3;
+    private String pic_4;
+    private String pic_5;
+    private String pic_6;
+    private String pic_7;
+    private String pic_8;
 
     //调用照相机返回图片文件
     private File tempFile;
     private Uri imageUri;
 
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS};
+
+    public static void verifyStoragePermissions(Activity activity) {
+        int permission = ActivityCompat.checkSelfPermission(activity,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE);
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        verifyStoragePermissions(this);
         setContentView(R.layout.layout_dentist_diagnosis_activity);
         hideActionBar();
         setBack();
@@ -344,6 +372,11 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
                     imageButton_1.setImageBitmap(image);
                     //也可以进行一些保存、压缩等操作后上传
                     String path = saveImage("crop", image);
+                    try {
+                        upLoadImage(path, 1);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             case CROP_REQUEST_CODE_2:     //调用剪裁后返回
@@ -355,6 +388,11 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
                     imageButton_2.setImageBitmap(image);
                     //也可以进行一些保存、压缩等操作后上传
                     String path = saveImage("crop", image);
+                    try {
+                        upLoadImage(path, 2);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             case CROP_REQUEST_CODE_3:     //调用剪裁后返回
@@ -366,6 +404,11 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
                     imageButton_3.setImageBitmap(image);
                     //也可以进行一些保存、压缩等操作后上传
                     String path = saveImage("crop", image);
+                    try {
+                        upLoadImage(path, 3);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             case CROP_REQUEST_CODE_4:     //调用剪裁后返回
@@ -377,6 +420,11 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
                     imageButton_4.setImageBitmap(image);
                     //也可以进行一些保存、压缩等操作后上传
                     String path = saveImage("crop", image);
+                    try {
+                        upLoadImage(path, 4);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             case CROP_REQUEST_CODE_5:     //调用剪裁后返回
@@ -388,6 +436,11 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
                     imageButton_5.setImageBitmap(image);
                     //也可以进行一些保存、压缩等操作后上传
                     String path = saveImage("crop", image);
+                    try {
+                        upLoadImage(path, 5);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             case CROP_REQUEST_CODE_6:     //调用剪裁后返回
@@ -399,6 +452,11 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
                     imageButton_6.setImageBitmap(image);
                     //也可以进行一些保存、压缩等操作后上传
                     String path = saveImage("crop", image);
+                    try {
+                        upLoadImage(path, 6);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             case CROP_REQUEST_CODE_7:     //调用剪裁后返回
@@ -410,6 +468,11 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
                     imageButton_7.setImageBitmap(image);
                     //也可以进行一些保存、压缩等操作后上传
                     String path = saveImage("crop", image);
+                    try {
+                        upLoadImage(path, 7);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             case CROP_REQUEST_CODE_8:     //调用剪裁后返回
@@ -422,11 +485,10 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
                     //也可以进行一些保存、压缩等操作后上传
                     String path = saveImage("crop", image);
                     try {
-                        upLoadImage(path);
+                        upLoadImage(path, 8);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-
                 }
                 break;
         }
@@ -454,10 +516,136 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
         return null;
     }
 
-    public void upLoadImage(String path) throws FileNotFoundException {
-        AVFile photos = AVFile.withAbsoluteLocalPath("picture1.png", path);
-        photos.saveInBackground();
+    public void upLoadImage(String path, final int position) throws FileNotFoundException {
+        final AVFile photos = AVFile.withAbsoluteLocalPath("picture_"+position+".png", path);
+        photos.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(AVException e) {
+                switch (position){
+                    case 1:
+                        pic_1 = photos.getUrl();
+                        break;
+                    case 2:
+                        pic_2 = photos.getUrl();
+                        break;
+                    case 3:
+                        pic_3 = photos.getUrl();
+                        break;
+                    case 4:
+                        pic_4 = photos.getUrl();
+                        break;
+                    case 5:
+                        pic_5 = photos.getUrl();
+                        break;
+                    case 6:
+                        pic_6 = photos.getUrl();
+                        break;
+                    case 7:
+                        pic_7 = photos.getUrl();
+                        break;
+                    case 8:
+                        pic_8 = photos.getUrl();
+                        break;
+                        default:
+                            break;
+                }
+            }
+        });
     }
+
+//    public void upLoadImage_1(String path) throws FileNotFoundException {
+//        final AVFile photos = AVFile.withAbsoluteLocalPath("picture_1.png", path);
+//        photos.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                pic_1 = photos.getUrl();
+//                Log.d("test", pic_1);
+//            }
+//        });
+//    }
+//
+//    public void upLoadImage_2(String path) throws FileNotFoundException {
+//        final AVFile photos = AVFile.withAbsoluteLocalPath("picture_2.png", path);
+//        photos.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                pic_2 = photos.getUrl();
+//                Log.d("test", pic_2);
+//
+//            }
+//        });
+//    }
+//
+//    public void upLoadImage_3(String path) throws FileNotFoundException {
+//        final AVFile photos = AVFile.withAbsoluteLocalPath("picture_3.png", path);
+//        photos.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                pic_3 = photos.getUrl();
+//                Log.d("test", pic_3);
+//
+//            }
+//        });
+//    }
+//
+//    public void upLoadImage_4(String path) throws FileNotFoundException {
+//        final AVFile photos = AVFile.withAbsoluteLocalPath("picture_4.png", path);
+//        photos.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                pic_4 = photos.getUrl();
+//                Log.d("test", pic_4);
+//
+//            }
+//        });
+//    }
+//
+//    public void upLoadImage_5(String path) throws FileNotFoundException {
+//        final AVFile photos = AVFile.withAbsoluteLocalPath("picture_5.png", path);
+//        photos.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                pic_5 = photos.getUrl();
+//                Log.d("test", pic_5);
+//
+//            }
+//        });
+//    }
+//
+//    public void upLoadImage_6(String path) throws FileNotFoundException {
+//        final AVFile photos = AVFile.withAbsoluteLocalPath("picture_6.png", path);
+//        photos.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                pic_6 = photos.getUrl();
+//                Log.d("test", pic_6);
+//
+//            }
+//        });
+//    }
+//
+//    public void upLoadImage_7(String path) throws FileNotFoundException {
+//        final AVFile photos = AVFile.withAbsoluteLocalPath("picture_7.png", path);
+//        photos.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                pic_7 = photos.getUrl();
+//                Log.d("test", pic_7);
+//
+//            }
+//        });
+//    }
+//
+//    public void upLoadImage_8(String path) throws FileNotFoundException {
+//        final AVFile photos = AVFile.withAbsoluteLocalPath("picture_8.png", path);
+//        photos.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                pic_8 = photos.getUrl();
+//                Log.d("test", pic_8);
+//            }
+//        });
+//    }
 
 
 
@@ -484,6 +672,31 @@ public class DentistDiagnosisActivity extends AppCompatActivity{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EditText name = (EditText)findViewById(R.id.editText_name);
+                EditText birthday = (EditText) findViewById(R.id.editText_birthday);
+                if(name.getText().toString().equals("") || birthday.toString().equals("")){
+                    Toast.makeText(DentistDiagnosisActivity.this, "信息填写不完整", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                EditText help = (EditText)findViewById(R.id.editText_expecthelp);
+                EditText addition = (EditText) findViewById(R.id.editText_addinformation);
+                AVObject diagnose = new AVObject("DiagnoseInfo");
+                SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+                diagnose.put("phone", phone.getString("phone", ""));
+                diagnose.put("help", help.getText().toString());
+                diagnose.put("addition", addition.getText().toString());
+                diagnose.put("tag", 1);
+                diagnose.put("pic1", pic_1);
+                diagnose.put("pic2", pic_2);
+                diagnose.put("pic3", pic_3);
+                diagnose.put("pic4", pic_4);
+                diagnose.put("pic5", pic_5);
+                diagnose.put("pic6", pic_6);
+                diagnose.put("pic7", pic_7);
+                diagnose.put("pic8", pic_8);
+                diagnose.put("name", name.getText().toString());
+                diagnose.put("birthday", birthday.getText().toString());
+                diagnose.saveInBackground();
                 Toast.makeText(view.getContext(), "提交成功，请耐心等待医生回复", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(DentistDiagnosisActivity.this, Mine.class);
                 startActivity(intent);

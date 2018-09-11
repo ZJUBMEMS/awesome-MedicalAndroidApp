@@ -1,5 +1,6 @@
 package com.example.zjubme.teethmanagement;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
@@ -110,29 +111,19 @@ public class CalendarActivity extends AppCompatActivity {
         });
     }
 
-    public void save(CalendarDay day, int i){
+    public void saveCanlendar(CalendarDay day, int i){
         AVObject calendarDay = new AVObject("CalendarDay");
+        SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+        calendarDay.put("phone", phone.getString("phone", ""));
         calendarDay.put("Tag",i);
         calendarDay.put("Date",day.getDate());
-        calendarDay.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(AVException e) {
-                if(e == null){
-                    Log.d("huni", "sucess");
-                }
-                else{
-                    Log.d("huni", "fail");
-                }
-            }
-        });
+        calendarDay.saveInBackground();
     }
 
-    public void load(){
-        AVQuery<AVObject> avQuery = new AVQuery<>("CalendarDay");
-        avQuery.whereEqualTo("Tag", 1);
-        AVQuery<AVObject> endQuery = new AVQuery<>("CalendarDay");
-        endQuery.whereEqualTo("Tag", 2);
-        AVQuery<AVObject> query = AVQuery.or(Arrays.asList(avQuery, endQuery));
+    public void loadCanlendar(){
+        SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+        AVQuery<AVObject> query = new AVQuery<>("CalendarDay");
+        query.whereEqualTo("phone", phone.getString("phone", ""));
         query.orderByAscending("Date");
 
         query.findInBackground(new FindCallback<AVObject>() {
@@ -148,12 +139,35 @@ public class CalendarActivity extends AppCompatActivity {
                         calendarViewDateList.add(calendarViewdate);
                     }
                     init();
+                    getCanlendar();
                     click();
                 }
 
             }
         });
 
+    }
+
+    private void getCanlendar(){
+        SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+        AVQuery<AVObject> query = new AVQuery<>("CalendarDay");
+        query.whereEqualTo("phone", phone.getString("phone", ""));
+        query.orderByAscending("Date");
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                if(e == null){
+                    calendarViewDateList = new ArrayList<>();
+                    for (int k=0; k<list.size(); k++){
+                        CalendarViewDate calendarViewdate = new CalendarViewDate();
+                        calendarViewdate.setDATE_SELECTED(list.get(k).getInt("Tag"));
+                        calendarViewdate.setDate(list.get(k).getDate("Date"));
+                        calendarViewdate.setCalendarDay(CalendarDay.from(list.get(k).getDate("Date")));
+                        calendarViewDateList.add(calendarViewdate);
+                    }
+                }
+            }
+        });
     }
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -170,8 +184,7 @@ public class CalendarActivity extends AppCompatActivity {
         materialCalendarView.setSelectionMode(MaterialCalendarView.SELECTION_MODE_MULTIPLE);
         calendarViewDate.setDate(new Date());
         calendarViewDate.setDATE_SELECTED(0);
-
-         load();
+        loadCanlendar();
 
 
 
@@ -186,7 +199,7 @@ public class CalendarActivity extends AppCompatActivity {
             if (d>=2){
                 for (int i=1; i<d; i++){
                     CalendarDay day = CalendarDay.from(calendarDay1.getYear(), calendarDay1.getMonth(), calendarDay1.getDay()+i);
-                    save(day,2);
+                    saveCanlendar(day,2);
                     NotSignDayDecorator notSignDayDecorator = new NotSignDayDecorator(CalendarActivity.this, day);
                     materialCalendarView.addDecorator(notSignDayDecorator);
                 }
@@ -238,7 +251,7 @@ public class CalendarActivity extends AppCompatActivity {
                         calendarviewDate.setCalendarDay(calendarDay);
                         calendarViewDateList.add(calendarviewDate);
                         calendarDayList.add(calendarDay);
-                        save(calendarDay, 1);
+                        saveCanlendar(calendarDay, 1);
                     }
                     else {
                         SignDayDecorator signDayDecorator = new SignDayDecorator(CalendarActivity.this, calendarDay);

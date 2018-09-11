@@ -31,18 +31,18 @@ public class HomePage extends AppCompatActivity {
     private String tip = "";
     public DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
-    public void save(long CuTime, int Switch, long AcTime, int i){
+    public void save(long CuTime, int Switch, long AcTime, String phone){
         AVObject avTime = new AVObject("Time");
-        avTime.put("TimeTag",i);
+        avTime.put("phone",phone);
         avTime.put("Switch",Switch);
         avTime.put("CuTime",CuTime);
         avTime.put("AcTime", AcTime);
         avTime.saveInBackground();
     }
 
-    public void save_data(long WeekData, long DaTime, int i){
+    public void save_data(long WeekData, long DaTime, String phone){
         AVObject avTime = new AVObject("TimeData");
-        avTime.put("TimeTag",i);
+        avTime.put("Phone",phone);
         avTime.put("WeekData",WeekData);
         avTime.put("DaTime",DaTime);
         avTime.saveInBackground();
@@ -50,7 +50,13 @@ public class HomePage extends AppCompatActivity {
 
     public void load_b() {
         AVQuery<AVObject> avQueryTime = new AVQuery<>("Time");
-        avQueryTime.whereEqualTo("TimeTag", 1);
+        final SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+        if(phone.getString("phone", "").equals("")){
+            Intent intent = new Intent(HomePage.this, CuteActivity.class);
+            startActivity(intent);
+            return;
+        }
+        avQueryTime.whereEqualTo("phone", phone.getString("phone", ""));
         avQueryTime.orderByDescending("createdAt");
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         avQueryTime.getFirstInBackground(new GetCallback<AVObject>() {
@@ -85,7 +91,7 @@ public class HomePage extends AppCompatActivity {
                             AcTime = AcTime + (ZoTime - CuTime);
 
                             Weekdata = NowTime.getTime()/1000/60/60/24/7;
-                            save_data(Weekdata, AcTime, 1);
+                            save_data(Weekdata, AcTime, phone.getString("phone", ""));
 
                             AcTime = (NowTime.getTime()/1000/60 - ZoTime);
                             button.setText(String.valueOf("开始"));
@@ -93,7 +99,7 @@ public class HomePage extends AppCompatActivity {
                             Switch = 1;
 
                             Weekdata = NowTime.getTime()/1000/60/60/24/7;
-                            save_data(Weekdata, AcTime, 1);
+                            save_data(Weekdata, AcTime, phone.getString("phone", ""));
 
                             AcTime = (long) 0;
                             button.setText(String.valueOf("停止"));
@@ -102,7 +108,7 @@ public class HomePage extends AppCompatActivity {
                     CuTime = NowTime.getTime()/1000/60;
 //                发送今日进度信息Autime
                     progressBar.setProgress((int)AcTime);
-                    save(CuTime, Switch, AcTime, 1);
+                    save(CuTime, Switch, AcTime, phone.getString("phone", ""));
                 }
             }
         });
@@ -110,7 +116,11 @@ public class HomePage extends AppCompatActivity {
 
     public void load_l() {
         AVQuery<AVObject> avQueryTime = new AVQuery<>("Time");
-        avQueryTime.whereEqualTo("TimeTag", 1);
+        final SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+        if(phone.getString("phone", "").equals("")){
+            return;
+        }
+        avQueryTime.whereEqualTo("phone", phone.getString("phone", ""));
         avQueryTime.orderByDescending("createdAt");
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -121,7 +131,7 @@ public class HomePage extends AppCompatActivity {
                 Button button = (Button) findViewById(R.id.button);
                 if (avObject==null){
                     Date NowTime = new Date();
-                    save(NowTime.getTime()/1000/60, 0, (long)0, 1);
+                    save(NowTime.getTime()/1000/60, 0, (long)0, phone.getString("phone", ""));
                     return;
                 }
                 if (e==null){
@@ -205,6 +215,12 @@ public class HomePage extends AppCompatActivity {
         todoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+                if(phone.getString("phone", "").equals("")){
+                    Intent intent = new Intent(HomePage.this, CuteActivity.class);
+                    startActivity(intent);
+                    return;
+                }
                 Intent intent = new Intent(HomePage.this, CalendarActivity.class);
                 startActivity(intent);
             }
@@ -213,6 +229,13 @@ public class HomePage extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+                Log.d("phone", phone.getString("phone", ""));
+                if(phone.getString("phone", "").equals("")){
+                    Intent intent = new Intent(HomePage.this, CuteActivity.class);
+                    startActivity(intent);
+                    return;
+                }
                 load_b();
             }
         });
@@ -224,6 +247,11 @@ public class HomePage extends AppCompatActivity {
         BottomTabLayout bottomTabLayout = (BottomTabLayout)findViewById(R.id.bottom_layout);
         setWhichTeethSockets();
         bottomTabLayout.refreshSelect();
+        SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+        if(phone.getString("phone", "").equals("")){
+            return;
+        }
+        load_l();
     }
 
 
