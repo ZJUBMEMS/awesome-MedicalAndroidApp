@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
@@ -28,10 +30,141 @@ public class HomePage extends AppCompatActivity {
     private String tipPre = "";
     private String tip = "";
     public DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+
+    public void save(long CuTime, int Switch, long AcTime, int i){
+        AVObject avTime = new AVObject("Time");
+        avTime.put("TimeTag",i);
+        avTime.put("Switch",Switch);
+        avTime.put("CuTime",CuTime);
+        avTime.put("AcTime", AcTime);
+        avTime.saveInBackground();
+    }
+
+    public void save_data(long WeekData, long DaTime, int i){
+        AVObject avTime = new AVObject("TimeData");
+        avTime.put("TimeTag",i);
+        avTime.put("WeekData",WeekData);
+        avTime.put("DaTime",DaTime);
+        avTime.saveInBackground();
+    }
+
+    public void load_b() {
+        AVQuery<AVObject> avQueryTime = new AVQuery<>("Time");
+        avQueryTime.whereEqualTo("TimeTag", 1);
+        avQueryTime.orderByDescending("createdAt");
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        avQueryTime.getFirstInBackground(new GetCallback<AVObject>() {
+
+            @Override
+            public void done(AVObject avObject, AVException e) {
+                if (e==null){
+                    long NextDay;
+                    long ZoTime;
+                    long Weekdata;
+                    long AcTime = avObject.getLong("AcTime");
+                    long CuTime = avObject.getLong("CuTime");
+                    int Switch = avObject.getInt("Switch");
+                    Date go = avObject.getCreatedAt();
+                    Date NowTime = new Date();
+                    NextDay = (NowTime.getTime()/1000/60 - CuTime)/60/24;
+                    Button button = (Button) findViewById(R.id.button);
+                    if (NextDay == (long)0){
+                        if (Switch == 1){
+                            Switch = 0;
+                            AcTime = AcTime + (NowTime.getTime()/1000/60 - CuTime);
+                            button.setText(String.valueOf("开始"));
+                        }else {
+                            Switch = 1;
+                            button.setText(String.valueOf("停止"));
+                        }
+                    }else {
+                        if (Switch == 1){
+                            Switch = 0;
+                            ZoTime = NowTime.getTime()/1000/60/60/24;
+                            ZoTime = ZoTime*60*24;
+                            AcTime = AcTime + (ZoTime - CuTime);
+
+                            Weekdata = NowTime.getTime()/1000/60/60/24/7;
+                            save_data(Weekdata, AcTime, 1);
+
+                            AcTime = (NowTime.getTime()/1000/60 - ZoTime);
+                            button.setText(String.valueOf("开始"));
+                        }else {
+                            Switch = 1;
+
+                            Weekdata = NowTime.getTime()/1000/60/60/24/7;
+                            save_data(Weekdata, AcTime, 1);
+
+                            AcTime = (long) 0;
+                            button.setText(String.valueOf("停止"));
+                        }
+                    }
+                    CuTime = NowTime.getTime()/1000/60;
+//                发送今日进度信息Autime
+                    progressBar.setProgress((int)AcTime);
+                    save(CuTime, Switch, AcTime, 1);
+                }
+            }
+        });
+    }
+
+    public void load_l() {
+        AVQuery<AVObject> avQueryTime = new AVQuery<>("Time");
+        avQueryTime.whereEqualTo("TimeTag", 1);
+        avQueryTime.orderByDescending("createdAt");
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        avQueryTime.getFirstInBackground(new GetCallback<AVObject>() {
+
+            @Override
+            public void done(AVObject avObject, AVException e) {
+                Button button = (Button) findViewById(R.id.button);
+                if (avObject==null){
+                    Date NowTime = new Date();
+                    save(NowTime.getTime()/1000/60, 0, (long)0, 1);
+                    return;
+                }
+                if (e==null){
+                    long AcTime;
+                    long CuTime;
+                    int Switch;
+                    long NextDay;
+                    long ZoTime;
+                    Switch = avObject.getInt("Switch");
+                    AcTime = avObject.getLong("AcTime");
+                    CuTime = avObject.getLong("CuTime");
+                    Date NowTime = new Date();
+                    NextDay = (NowTime.getTime()/1000/60 - CuTime)/60/24;
+                    if (NextDay == (long)0){
+                        if (Switch == 1){
+                            AcTime = AcTime + (NowTime.getTime()/1000/60 - CuTime);
+                            button.setText(String.valueOf("停止"));
+                        }else {
+                            button.setText(String.valueOf("开始"));
+                        }
+                    }else {
+                        if (Switch == 1){
+                            ZoTime = NowTime.getTime()/1000/60/60/24;
+                            ZoTime = ZoTime*60*24;
+                            AcTime = (NowTime.getTime()/1000/60 - ZoTime);
+                            button.setText(String.valueOf("停止"));
+                        }else {
+                            AcTime = (long) 0;
+                            button.setText(String.valueOf("开始"));
+                        }
+                    }
+                    progressBar.setProgress((int)AcTime);
+//                发送今日进度信息Actime
+                }
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
+        load_l();
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){
             actionBar.hide();
@@ -74,6 +207,13 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HomePage.this, CalendarActivity.class);
                 startActivity(intent);
+            }
+        });
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                load_b();
             }
         });
     }
