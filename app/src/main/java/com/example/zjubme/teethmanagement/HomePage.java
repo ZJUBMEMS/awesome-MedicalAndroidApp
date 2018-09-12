@@ -40,11 +40,12 @@ public class HomePage extends AppCompatActivity {
         avTime.saveInBackground();
     }
 
-    public void save_data(long WeekData, long DaTime, String phone){
+    public void save_data(long WeekData, long DaTime, String phone, int WeekDay){
         AVObject avTime = new AVObject("TimeData");
-        avTime.put("Phone",phone);
+        avTime.put("phone",phone);
         avTime.put("WeekData",WeekData);
         avTime.put("DaTime",DaTime);
+        avTime.put("WeekDay",WeekDay);
         avTime.saveInBackground();
     }
 
@@ -70,9 +71,15 @@ public class HomePage extends AppCompatActivity {
                     long AcTime = avObject.getLong("AcTime");
                     long CuTime = avObject.getLong("CuTime");
                     int Switch = avObject.getInt("Switch");
-                    Date go = avObject.getCreatedAt();
+                    int WeekDay;
                     Date NowTime = new Date();
-                    NextDay = (NowTime.getTime()/1000/60 - CuTime)/60/24;
+                    ZoTime = NowTime.getTime()/1000/60/60/24;
+                    ZoTime = ZoTime*60*24-480;
+                    if(ZoTime > CuTime){
+                        NextDay = 1;
+                    }else {
+                        NextDay = 0;
+                    }
                     Button button = (Button) findViewById(R.id.button);
                     if (NextDay == (long)0){
                         if (Switch == 1){
@@ -86,20 +93,22 @@ public class HomePage extends AppCompatActivity {
                     }else {
                         if (Switch == 1){
                             Switch = 0;
-                            ZoTime = NowTime.getTime()/1000/60/60/24;
-                            ZoTime = ZoTime*60*24;
                             AcTime = AcTime + (ZoTime - CuTime);
 
-                            Weekdata = NowTime.getTime()/1000/60/60/24/7;
-                            save_data(Weekdata, AcTime, phone.getString("phone", ""));
+                            long Correct = NowTime.getTime()/1000/60/60/24 + 3;
+                            Weekdata = Correct/7;
+                            WeekDay = (int)(Correct%Weekdata);
+                            save_data(Weekdata, AcTime, phone.getString("phone", ""),WeekDay);
 
                             AcTime = (NowTime.getTime()/1000/60 - ZoTime);
                             button.setText(String.valueOf("开始"));
                         }else {
                             Switch = 1;
 
-                            Weekdata = NowTime.getTime()/1000/60/60/24/7;
-                            save_data(Weekdata, AcTime, phone.getString("phone", ""));
+                            long Correct = NowTime.getTime()/1000/60/60/24 + 3;
+                            Weekdata = Correct/7;
+                            WeekDay = (int)(Correct%Weekdata);
+                            save_data(Weekdata, AcTime, phone.getString("phone", ""),WeekDay);
 
                             AcTime = (long) 0;
                             button.setText(String.valueOf("停止"));
@@ -144,7 +153,13 @@ public class HomePage extends AppCompatActivity {
                     AcTime = avObject.getLong("AcTime");
                     CuTime = avObject.getLong("CuTime");
                     Date NowTime = new Date();
-                    NextDay = (NowTime.getTime()/1000/60 - CuTime)/60/24;
+                    ZoTime = NowTime.getTime()/1000/60/60/24;
+                    ZoTime = ZoTime*60*24-480;
+                    if(ZoTime > CuTime){
+                        NextDay = 1;
+                    }else {
+                        NextDay = 0;
+                    }
                     if (NextDay == (long)0){
                         if (Switch == 1){
                             AcTime = AcTime + (NowTime.getTime()/1000/60 - CuTime);
@@ -154,8 +169,6 @@ public class HomePage extends AppCompatActivity {
                         }
                     }else {
                         if (Switch == 1){
-                            ZoTime = NowTime.getTime()/1000/60/60/24;
-                            ZoTime = ZoTime*60*24;
                             AcTime = (NowTime.getTime()/1000/60 - ZoTime);
                             button.setText(String.valueOf("停止"));
                         }else {

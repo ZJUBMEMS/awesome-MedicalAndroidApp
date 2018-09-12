@@ -44,10 +44,18 @@ public class CalendarActivity extends AppCompatActivity {
     private List<BarEntry> entries = new ArrayList<>();
 
     public void loadtime() {
-        AVQuery<AVObject> avQueryTime = new AVQuery<>("TimeData");
         Date NowTime = new Date();
-        long Weekdata = NowTime.getTime()/1000/60/60/24/7;
-        avQueryTime.whereEqualTo("WeekData", Weekdata);
+        final SharedPreferences phone = getSharedPreferences("data", MODE_PRIVATE);
+        if(phone.getString("phone", "").equals("")){
+            return;
+        }
+        long Correct = NowTime.getTime()/1000/60/60/24 + 3;
+        long Weekdata = Correct/7;
+        AVQuery<AVObject> avQueryTime_1 = new AVQuery<>("TimeData");
+        avQueryTime_1.whereEqualTo("WeekData", Weekdata);
+        AVQuery<AVObject> avQueryTime_2 = new AVQuery<>("TimeData");
+        avQueryTime_2.whereEqualTo("phone", phone.getString("phone", ""));
+        AVQuery<AVObject> avQueryTime = AVQuery.and(Arrays.asList(avQueryTime_1,avQueryTime_2));
         avQueryTime.orderByAscending("createdAt");
         avQueryTime.findInBackground(new FindCallback<AVObject>() {
             @Override
@@ -64,12 +72,19 @@ public class CalendarActivity extends AppCompatActivity {
                     return;
                 }
                 if (e==null){
-                    for (int k=0; k<list.size(); k++){
-                        timeData = (float)(list.get(k).getLong("DaTime")/60.0);
-                        entries.add(new BarEntry(k,timeData));
-                    }
-                    for (int k=6; k>list.size()-1; k--){
-                        entries.add(new BarEntry(k,0f));
+                    int Flag = 0;
+                    for (int k=0; k<7; k++) {
+                        for (int i = 0; i < list.size(); i++) {
+                            if (k == list.get(i).getInt("WeekDay")) {
+                                entries.add(new BarEntry(k, (float) (list.get(i).getLong("DaTime") / 60.0)));
+                                Flag = 1;
+                            }
+                        }
+                        if (Flag ==0){
+                            entries.add(new BarEntry(k, 0));
+                        }else {
+                            Flag = 0;
+                        }
                     }
                 }
                 BarDataSet dataSet = new BarDataSet(entries,"");
@@ -101,12 +116,6 @@ public class CalendarActivity extends AppCompatActivity {
                 YAxis leftAxis = chart.getAxisLeft();
                 leftAxis.setAxisMaximum(22f);
                 leftAxis.setDrawGridLines(true);
-                LimitLine ll = new LimitLine(140f, "ganleni");
-                ll.setLineColor(Color.RED);
-                ll.setLineWidth(4f);
-                ll.setTextColor(Color.BLACK);
-                ll.setTextSize(12f);
-                leftAxis.addLimitLine(ll);
             }
         });
     }
