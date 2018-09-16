@@ -17,7 +17,7 @@
             android:padding="10dp">
 
             <ImageButton
-                android:id="@+id/webview_back"
+                android:id="@+id/dianose_message_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -70,57 +70,16 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/text_color_hint"
-        />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/yourProblems"
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_margin="20dp" />
     </LinearLayout>
-    
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/text_color_hint"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:text="牙博士建议"
-            android:textSize="15dp"
-            android:textColor="@color/diagnose_message_green"/>
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/text_color_hint"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
-        <TextView
-            android:id="@+id/suggestionsFromDoctor"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
 
 
 

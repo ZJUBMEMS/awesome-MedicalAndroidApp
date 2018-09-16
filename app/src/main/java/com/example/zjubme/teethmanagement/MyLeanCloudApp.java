@@ -10,7 +10,7 @@ public class MyLeanCloudApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        AVOSCloud.initialize(this, "msPsA8aNeLWOVoJgnTK2IhFL-gzGzoHsz", "DSIy3Lmrgd6Qo9Ox0vWmuGRl" );
+        AVOSCloud.initialize(this, "msPsA8aNeLWOVoJgnTK2IhFL-gzGzoHsz","DSIy3Lmrgd6Qo9Ox0vWmuGRl" );
         PushService.setDefaultPushCallback(this, HomePage.class);
         PushService.subscribe(this, "public", HomePage.class);
         AVInstallation.getCurrentInstallation().saveInBackground();

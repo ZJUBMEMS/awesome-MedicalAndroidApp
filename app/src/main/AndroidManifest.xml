@@ -48,19 +48,19 @@
             android:name=".HomePage"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MessageListFragment"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MessageListFragmentPagerAdepter"
-            android:screenOrientation="portrait"/>
         <activity android:name=".MessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MessageContent"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"/>
+        <activity android:name=".DiagnoseMessageActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity android:name=".CalendarActivity"
             android:screenOrientation="portrait"/>
