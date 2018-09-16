@@ -95,7 +95,7 @@ public class HomePage extends AppCompatActivity {
                             Switch = 0;
                             AcTime = AcTime + (ZoTime - CuTime);
 
-                            long Correct = NowTime.getTime()/1000/60/60/24 + 3;
+                            long Correct = CuTime/60/24 + 4;
                             Weekdata = Correct/7;
                             WeekDay = (int)(Correct%Weekdata);
                             save_data(Weekdata, AcTime, phone.getString("phone", ""),WeekDay);
@@ -105,7 +105,7 @@ public class HomePage extends AppCompatActivity {
                         }else {
                             Switch = 1;
 
-                            long Correct = NowTime.getTime()/1000/60/60/24 + 3;
+                            long Correct = CuTime/60/24 + 4;
                             Weekdata = Correct/7;
                             WeekDay = (int)(Correct%Weekdata);
                             save_data(Weekdata, AcTime, phone.getString("phone", ""),WeekDay);
