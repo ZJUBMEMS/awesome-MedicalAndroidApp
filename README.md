@@ -1,19 +1,27 @@
 # awesome-MedicalAndroidApp
-awesome medical android app
+#### Introduction
 
-#### 开发注意事项：
-
-* 团队成员进行开发时，需要在dev分支下clone代码，并进行开发，具体操作为在github desktop中切换至dev branch然后pull拉下整个文件。
-* 开发时注意完成一小部分需求功能后，在本地仓库经常性进行提交，具体操作为在github desktop中 commit 至 dev中。
-* 此外可以充分学习利用git的版本回退功能，以防止由于代码写乱。
-* 在完成了一个完整页面或者完整需求后（就是页面能显示，程序能跑），提交pull request（我将项目设置为团队成员仅有read权利，即pull&read code的权利。
+Awesome-MedicalAndroidApp is born for patients, who want to take good care of their teeth. It is an android app and is connected to the database which is deployed on the LeanCloud Server.
 
 
 
-#### 命名注意事项：
+#### Features
 
-* 命名一定要能够描述正在开发的事物。
+- **Self-Diagnosis:** If you don't know whether you should straightening your teeth, you can use this module. You can take photos of your teeth in different perspectives and send to the dentists together with your personal information and descriptions about your teeth.
+- **Notification:** You can see your diagnosis message in the notification module.
+- **Calendar:** Don't forget to sign in, or the color of the corresponding date will be red to warn you about it.
+- **Timer Notification:** If you wear the retainer, you'll receive the notification in the evening, maybe 22:00.
+- **Articles:** You can see many articles related to Orthodontics in the page module, and you can also search the articles you want.
+- **Tips:** You can see many useful tips if you click the teeth baby according to the hint.
+- **Personal information:** You can fill in the information about youself and wearing, which will be shown in the teeth baby module.
+- **Timer and Histogram:** If you wear the invisual brace, you may be worried that you always want to know whether the time you have already wear is up to 22 hours or not. Try this module! You can see the daily process in the processing bar and you can see the weekly data in the histogram.
 
-* JAVA类名命名方式：MainActivity
-* 方法名命名方式: onCreate
-* layout及其他资源文件命名方式：search_page    home_page
+
+
+#### Technique Support
+
+- LeanCloud API
+
+
+
+
