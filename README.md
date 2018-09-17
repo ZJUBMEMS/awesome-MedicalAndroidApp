@@ -1,11 +1,11 @@
 # awesome-MedicalAndroidApp
-#### Introduction
+## Introduction
 
 Awesome-MedicalAndroidApp is born for patients, who want to take good care of their teeth. It is an android app and is connected to the database which is deployed on the LeanCloud Server.
 
 
 
-#### Features
+## Features
 
 - **Self-Diagnosis:** If you don't know whether you should straightening your teeth, you can use this module. You can take photos of your teeth in different perspectives and send to the dentists together with your personal information and descriptions about your teeth.
 - **Notification:** You can see your diagnosis message in the notification module.
@@ -18,7 +18,7 @@ Awesome-MedicalAndroidApp is born for patients, who want to take good care of th
 
 
 
-#### Demo
+## Demo
 
 ![homepage](img/1.jpeg)
 
@@ -30,7 +30,7 @@ Awesome-MedicalAndroidApp is born for patients, who want to take good care of th
 
 ![teethmanagement](img/5.jpeg)
 
-#### Technique Support
+## Technique Support
 
 - LeanCloud API
 
